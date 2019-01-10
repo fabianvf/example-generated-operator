@@ -1,0 +1,7 @@
+apiVersion: apps.fabianism.us/v1alpha1
+kind: ExampleApp
+metadata:
+  name: example-exampleapp
+spec:
+  # Add fields here
+  size: 3

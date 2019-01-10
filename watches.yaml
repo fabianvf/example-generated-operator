@@ -1,0 +1,5 @@
+---
+- version: v1alpha1
+  group: apps.fabianism.us
+  kind: ExampleApp
+  role: /opt/ansible/roles/exampleapp
