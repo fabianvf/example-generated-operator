@@ -1,2 +1,11 @@
 ---
-# tasks file for exampleapp
+- name: create Example configmap
+  k8s:
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: 'test-data'
+        namespace: '{{ meta.namespace }}'
+      data:
+        hello: world

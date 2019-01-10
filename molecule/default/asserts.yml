@@ -6,12 +6,10 @@
   vars:
     ansible_python_interpreter: '{{ ansible_playbook_python }}'
   tasks:
-    - name: Get all pods in {{ namespace }}
-      k8s_facts:
-        api_version: v1
-        kind: Pod
-        namespace: '{{ namespace }}'
-      register: pods
-
-    - name: Output pods
-      debug: var=pods
+    - debug: var=cm
+      vars:
+        cm: '{{ lookup("k8s", api_version="v1", kind="ConfigMap", namespace=namespace, resource_name="test-data") }}'
+    - assert:
+        that: cm.data.hello == 'world'
+      vars:
+        cm: '{{ lookup("k8s", api_version="v1", kind="ConfigMap", namespace=namespace, resource_name="test-data") }}'
